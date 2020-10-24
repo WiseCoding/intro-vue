@@ -19,6 +19,14 @@
   import uniqid from 'uniqid';
 
   export default {
+    created() {
+      if (localStorage.getItem('todos') === null) {
+        localStorage.setItem('todos', JSON.stringify([]));
+      } else {
+        this.todos = JSON.parse(localStorage.getItem('todos'));
+      }
+    },
+
     components: {
       Header,
       Footer,
@@ -46,6 +54,7 @@
           completed: false,
         };
         this.todos.push(newTodo);
+        localStorage.setItem('todos', JSON.stringify(this.todos));
       },
       deleteTodo(id) {
         this.todos = this.todos.filter((todo) => todo.id !== id);
@@ -57,6 +66,11 @@
           }
           return todo;
         });
+      },
+    },
+    watch: {
+      todos() {
+        localStorage.setItem('todos', JSON.stringify(this.todos));
       },
     },
   };

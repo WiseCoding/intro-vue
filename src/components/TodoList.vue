@@ -62,7 +62,7 @@
       Done ✅
     </ul>
   </div>
-  <div v-else>All done 🎉</div>
+  <div v-else class="font-mono">Let's do something 😴</div>
 </template>
 
 <script>
