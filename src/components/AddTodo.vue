@@ -1,12 +1,13 @@
 <template>
   <div class="rounded-xl relative max-w-xl p-2 mx-auto my-8 bg-white shadow-lg">
-    <form action="">
+    <form @submit.prevent="addTodo">
       <input
         name="input"
         type="text"
         placeholder="Add Todo..."
         class="focus:bg-gray-200 hover:bg-gray-200 hover:border-gray-400 w-full p-2 bg-gray-100 border border-gray-100 rounded-lg shadow outline-none"
         required
+        ref="userInput"
       />
       <button
         name="submit"
@@ -34,7 +35,15 @@
 </template>
 
 <script>
-  export default {};
+  export default {
+    emits: ['add-todo'],
+    methods: {
+      addTodo() {
+        this.$emit('add-todo', this.$refs.userInput.value);
+        this.$refs.userInput.value = '';
+      },
+    },
+  };
 </script>
 
 <style scoped></style>

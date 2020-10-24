@@ -3,8 +3,8 @@
     <Header />
     <div className="flex-grow container mx-auto m-6">
       <div className="mx-3">
-        <AddTodo />
-        <TodoList />
+        <AddTodo @add-todo="saveTodo" />
+        <TodoList :todos="todos" />
       </div>
     </div>
     <Footer />
@@ -16,6 +16,7 @@
   import Footer from './components/Footer.vue';
   import AddTodo from './components/AddTodo.vue';
   import TodoList from './components/TodoList.vue';
+  import uniqid from 'uniqid';
 
   export default {
     components: {
@@ -29,7 +30,16 @@
         todos: [],
       };
     },
-    methods: {},
+    methods: {
+      saveTodo(todo) {
+        const newTodo = {
+          id: uniqid(),
+          body: todo,
+          completed: false,
+        };
+        this.todos.push(newTodo);
+      },
+    },
   };
 </script>
 
