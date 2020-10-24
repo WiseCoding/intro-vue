@@ -2,9 +2,10 @@
   <div
     class="flex flex-row items-center justify-between p-1 my-2 bg-gray-200 rounded-full"
   >
-    <div title="Mark as complete!" @click="completeTodo">
+    <div title="Mark as complete!" @click="completeTodo(id)">
       <svg
-        class="hover:scale-125 hover:bg-green-500 w-6 h-6 p-1 mx-1 ml-2 transform bg-gray-400 border border-gray-700 rounded-full cursor-pointer"
+        class="hover:scale-125 hover:bg-green-500 w-6 h-6 p-1 mx-1 ml-2 transform border border-gray-700 rounded-full cursor-pointer"
+        :class="[completed ? 'bg-green-500 scale-125' : 'bg-gray-400']"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -16,10 +17,14 @@
         />
       </svg>
     </div>
-    <p class="w-full p-2 overflow-y-scroll text-left text-black">
+    <p
+      class="w-full p-2 overflow-y-scroll text-left"
+      :class="[completed ? 'line-through text-gray-500' : 'text-black']"
+      @click="ping"
+    >
       {{ body }}
     </p>
-    <div title="Delete me!" @click="deleteTodo">
+    <div title="Delete me!" @click="deleteTodo(id)">
       <svg
         class="hover:scale-125 hover:bg-red-500 w-6 h-6 p-1 mx-1 mr-2 transform bg-red-300 border border-gray-700 rounded-full cursor-pointer"
         fill="none"
@@ -40,17 +45,16 @@
 
 <script>
   export default {
+    emits: ['delete-todo', 'complete-todo'],
     props: {
       id: { type: String, required: true },
       body: { type: String, required: true },
       completed: { type: Boolean, required: true },
     },
+    inject: ['deleteTodo', 'completeTodo'],
     methods: {
-      completeTodo() {
-        console.log(this.id);
-      },
-      deleteTodo() {
-        console.log(this.body);
+      ping() {
+        console.log(this.completed);
       },
     },
   };

@@ -30,6 +30,14 @@
         todos: [],
       };
     },
+
+    provide() {
+      return {
+        deleteTodo: this.deleteTodo,
+        completeTodo: this.completeTodo,
+      };
+    },
+
     methods: {
       saveTodo(todo) {
         const newTodo = {
@@ -38,6 +46,17 @@
           completed: false,
         };
         this.todos.push(newTodo);
+      },
+      deleteTodo(id) {
+        this.todos = this.todos.filter((todo) => todo.id !== id);
+      },
+      completeTodo(id) {
+        this.todos = this.todos.map((todo) => {
+          if (todo.id === id) {
+            return { ...todo, completed: !todo.completed };
+          }
+          return todo;
+        });
       },
     },
   };

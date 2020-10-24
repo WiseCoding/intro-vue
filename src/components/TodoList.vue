@@ -1,5 +1,8 @@
 <template>
-  <div class="rounded-xl relative max-w-xl mx-auto my-8 bg-white shadow-lg">
+  <div
+    v-if="todos.length > 0"
+    class="rounded-xl relative max-w-xl mx-auto my-8 bg-white shadow-lg"
+  >
     <div
       class="rounded-t-xl flex flex-row items-center justify-between text-white bg-gray-700"
     >
@@ -53,6 +56,7 @@
       />
     </ul>
   </div>
+  <div v-else>All done 🎉</div>
 </template>
 
 <script>
