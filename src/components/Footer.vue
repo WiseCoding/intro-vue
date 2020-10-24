@@ -2,7 +2,7 @@
   <footer
     class="bg-gradient-to-r from-blue-600 to-green-600 md:rounded-t-3xl flex-shrink-0 w-full bg-white"
   >
-    <div class="sm:px-6 lg:px-8 px-4 py-2 mx-auto space-y-8 overflow-hidden">
+    <div class="sm:px-6 lg:px-8 px-4 py-2 mx-auto overflow-hidden">
       <div class="flex justify-center px-5 py-2">
         <a
           href="https://github.com/WiseCoding/intro-react"
@@ -24,7 +24,7 @@
         </a>
       </div>
 
-      <div class="text-center text-white">
+      <div class="my-1 text-center text-white">
         &copy; 2020
         <a href="https://github.com/WiseCoding/" class="hover:text-black">
           Mattias

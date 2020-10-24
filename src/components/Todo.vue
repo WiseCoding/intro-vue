@@ -2,7 +2,10 @@
   <div
     class="flex flex-row items-center justify-between p-1 my-2 bg-gray-200 rounded-full"
   >
-    <div title="Mark as complete!" @click="completeTodo(id)">
+    <div
+      :title="completed ? 'Uncomplete...' : 'Complete!'"
+      @click="completeTodo(id)"
+    >
       <svg
         class="hover:scale-125 hover:bg-green-500 w-6 h-6 p-1 mx-1 ml-2 transform border border-gray-700 rounded-full cursor-pointer"
         :class="[completed ? 'bg-green-500 scale-125' : 'bg-gray-400']"
@@ -20,11 +23,10 @@
     <p
       class="w-full p-2 overflow-y-scroll text-left"
       :class="[completed ? 'line-through text-gray-500' : 'text-black']"
-      @click="ping"
     >
       {{ body }}
     </p>
-    <div title="Delete me!" @click="deleteTodo(id)">
+    <div title="Delete!" @click="deleteTodo(id)">
       <svg
         class="hover:scale-125 hover:bg-red-500 w-6 h-6 p-1 mx-1 mr-2 transform bg-red-300 border border-gray-700 rounded-full cursor-pointer"
         fill="none"
@@ -52,10 +54,5 @@
       completed: { type: Boolean, required: true },
     },
     inject: ['deleteTodo', 'completeTodo'],
-    methods: {
-      ping() {
-        console.log(this.completed);
-      },
-    },
   };
 </script>
