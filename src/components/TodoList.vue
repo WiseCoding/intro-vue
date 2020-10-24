@@ -44,7 +44,13 @@
       </div>
     </div>
     <ul class="p-2 m-2">
-      <Todo />
+      <Todo
+        v-for="todo in todos"
+        :key="todo.id"
+        :id="todo.id"
+        :body="todo.body"
+        :completed="todo.completed"
+      />
     </ul>
   </div>
 </template>
@@ -53,6 +59,9 @@
   import Todo from './Todo.vue';
   export default {
     components: { Todo },
+    props: {
+      todos: { type: Array, required: true },
+    },
   };
 </script>
 

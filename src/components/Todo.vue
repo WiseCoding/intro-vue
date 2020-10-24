@@ -2,7 +2,7 @@
   <div
     class="flex flex-row items-center justify-between p-1 my-2 bg-gray-200 rounded-full"
   >
-    <div title="Mark as complete!">
+    <div title="Mark as complete!" @click="completeTodo">
       <svg
         class="hover:scale-125 hover:bg-green-500 w-6 h-6 p-1 mx-1 ml-2 transform bg-gray-400 border border-gray-700 rounded-full cursor-pointer"
         fill="currentColor"
@@ -17,9 +17,9 @@
       </svg>
     </div>
     <p class="w-full p-2 overflow-y-scroll text-left text-black">
-      BODY
+      {{ body }}
     </p>
-    <div title="Delete me!">
+    <div title="Delete me!" @click="deleteTodo">
       <svg
         class="hover:scale-125 hover:bg-red-500 w-6 h-6 p-1 mx-1 mr-2 transform bg-red-300 border border-gray-700 rounded-full cursor-pointer"
         fill="none"
@@ -37,3 +37,21 @@
     </div>
   </div>
 </template>
+
+<script>
+  export default {
+    props: {
+      id: { type: String, required: true },
+      body: { type: String, required: true },
+      completed: { type: Boolean, required: true },
+    },
+    methods: {
+      completeTodo() {
+        console.log(this.id);
+      },
+      deleteTodo() {
+        console.log(this.body);
+      },
+    },
+  };
+</script>
