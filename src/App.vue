@@ -53,8 +53,7 @@
           body: todo,
           completed: false,
         };
-        this.todos.push(newTodo);
-        localStorage.setItem('todos', JSON.stringify(this.todos));
+        this.todos = [...this.todos, newTodo];
       },
       deleteTodo(id) {
         this.todos = this.todos.filter((todo) => todo.id !== id);

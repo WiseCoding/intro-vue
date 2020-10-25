@@ -108,6 +108,7 @@
     watch: {
       todos() {
         this.printTodos = this.manageTodos();
+        console.log('test');
       },
       reverse() {
         this.printTodos = this.manageTodos();
