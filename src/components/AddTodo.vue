@@ -13,10 +13,14 @@
         name="submit"
         type="submit"
         title="Add Todo"
-        class="sm:absolute sm:right-0 sm:bottom-0 bg-gradient-to-r hover:from-blue-600 hover:to-green-600 sm:p-0 hover:shadow-lg sm:translate-x-1 sm:translate-y-1 hover:scale-125 p-1 px-10 mt-4 text-white transform bg-gray-800 border border-gray-700 rounded-full shadow cursor-pointer"
+        class="bg-gradient-to-r hover:from-blue-600 hover:to-green-600 hover:shadow-lg hover:scale-125 absolute bottom-0 right-0 p-0 mt-4 text-white transform translate-x-1 translate-y-1 bg-gray-800 border border-gray-700 rounded-full cursor-pointer"
+        :class="[
+          submit ? 'from-blue-600 to-green-600 shadow-lg scale-125' : 'shadow',
+        ]"
       >
         <svg
           class="w-6 h-6"
+          :class="[submit ? 'animate-spin' : '']"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -37,10 +41,19 @@
 <script>
   export default {
     emits: ['add-todo'],
+    data() {
+      return {
+        submit: false,
+      };
+    },
     methods: {
       addTodo() {
+        this.submit = true;
         this.$emit('add-todo', this.$refs.userInput.value);
         this.$refs.userInput.value = '';
+        setTimeout(() => {
+          this.submit = false;
+        }, 400);
       },
     },
   };

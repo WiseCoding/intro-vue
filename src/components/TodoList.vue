@@ -7,7 +7,7 @@
       class="rounded-t-xl flex flex-row items-center justify-between text-white bg-gray-700"
     >
       <div
-        class="hover:text-blue-600 hover:bg-white p-1 m-2 text-white transform bg-gray-900 border border-gray-300 cursor-pointer"
+        class="hover:text-green-600 hover:bg-white p-1 m-2 text-white transform bg-gray-900 border border-gray-300 cursor-pointer"
         :class="[filter ? 'bg-green-500 scale-125 rounded-lg' : 'rounded-full']"
         :title="filter ? 'Show Completed' : 'Hide Completed'"
         @click="hideCompleted"
@@ -29,7 +29,12 @@
       </div>
       <h2 class="font-mono">TODOS</h2>
       <div
-        class="hover:text-blue-600 hover:bg-white p-1 m-2 text-white bg-gray-900 border border-gray-300 rounded-full cursor-pointer"
+        class=" hover:bg-white p-1 m-2 bg-gray-900 border border-gray-300 rounded-full cursor-pointer"
+        :class="
+          reverse
+            ? 'text-red-300 hover:text-red-600'
+            : 'text-blue-300 hover:text-blue-600'
+        "
         :title="reverse ? 'Sort: Latest' : 'Sort: Oldest'"
         @click="reverseOrder"
       >
@@ -108,7 +113,6 @@
     watch: {
       todos() {
         this.printTodos = this.manageTodos();
-        console.log('test');
       },
       reverse() {
         this.printTodos = this.manageTodos();

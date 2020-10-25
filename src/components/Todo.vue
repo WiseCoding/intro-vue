@@ -26,7 +26,7 @@
     >
       {{ body }}
     </p>
-    <div title="Delete!" @click="deleteTodo(id)">
+    <div :title="`Delete: ${body}`" @click="deleteTodo(id)">
       <svg
         class="hover:scale-125 hover:bg-red-500 w-6 h-6 p-1 mx-1 mr-2 transform bg-red-300 border border-gray-700 rounded-full cursor-pointer"
         fill="none"
