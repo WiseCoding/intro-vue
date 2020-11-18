@@ -1,4 +1,4 @@
-<h2 align="center"><b>Intro Vue3</b></h2>
+<h2 align="center"><b>Intro Vue 3</b></h2>
 
 <p align="center">
   <a href="https://v3.vuejs.org/" target="_blank">
